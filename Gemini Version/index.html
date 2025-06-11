@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Daily Report - June 11, 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Third-party libraries for charts and CSV parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__title">AI Tools Daily Report</h1>
+                <div class="header__meta">
+                    <span class="header__date">June 11, 2025</span>
+                    <span class="header__updated">Last updated: <span id="lastUpdated">...</span></span>
+                </div>
+            </div>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">🌙</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Executive Summary -->
+            <section class="summary">
+                <h2 class="summary__title">Executive Summary</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-card__value" id="total-updates">--</div>
+                        <div class="metric-card__label">Total Updates</div>
+                    </div>
+                    <div class="metric-card metric-card--highlight">
+                        <div class="metric-card__value" id="high-impact-updates">--</div>
+                        <div class="metric-card__label">High Impact</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__value" id="funding-rounds">--</div>
+                        <div class="metric-card__label">Funding Rounds</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__value" id="product-launches">--</div>
+                        <div class="metric-card__label">Product Launches</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts -->
+            <section class="charts-section">
+                <div class="chart-wrapper">
+                    <h2 class="section-title">AI News Volume (June 2025)</h2>
+                    <div class="chart-container">
+                        <canvas id="aiNewsChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <h2 class="section-title">AI-Driven News Forecast</h2>
+                     <div class="chart-container">
+                        <canvas id="forecastChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- AI Impact Analysis -->
+            <section class="impact-analysis">
+                <h2 class="section-title">Impact Analysis & Forecasting</h2>
+                <div id="impact-analysis-content" class="analysis-content">
+                    <p>Generating analysis...</p>
+                </div>
+            </section>
+
+
+            <!-- Controls -->
+            <section class="controls">
+                <div class="controls__group">
+                    <input type="search" id="searchInput" class="search-input" placeholder="Search updates... (Press '/' to focus)">
+                </div>
+                <div class="controls__group controls__filters">
+                    <select id="filter-category" class="control-select">
+                        <option value="all">All Categories</option>
+                        <!-- Categories will be populated by JS -->
+                    </select>
+                    <select id="sort-select" class="control-select">
+                        <option value="rank">Sort by Rank</option>
+                        <option value="date">Sort by Date</option>
+                        <option value="impact">Sort by Impact</option>
+                    </select>
+                </div>
+                 <div class="controls__group controls__export">
+                    <button id="export-csv-btn" class="btn btn-secondary">Export CSV</button>
+                    <button id="export-json-btn" class="btn btn-secondary">Export JSON</button>
+                </div>
+                <div class="controls__group view-toggle">
+                    <button id="grid-view-btn" class="view-btn active" aria-label="Grid View">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    </button>
+                    <button id="list-view-btn" class="view-btn" aria-label="List View">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- AI Updates -->
+            <section id="ai-updates">
+                <h2 class="section-title">Latest Updates</h2>
+                <div id="updates-grid" class="updates-grid">
+                    <!-- Loading message shown while data is fetched -->
+                    <p id="loading-message">Loading AI updates...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Modal for displaying update details -->
+    <div id="details-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            <div class="modal-thumbnail">
+                <img id="modal-thumbnail-img" src="" alt="News thumbnail">
+            </div>
+            <div class="modal-body">
+                <h2 id="modal-title"></h2>
+                <div class="modal-meta">
+                    <span id="modal-category" class="card__tag"></span>
+                    <span id="modal-impact" class="card__tag"></span>
+                    <span id="modal-date" class="card__tag"></span>
+                </div>
+                <p id="modal-description"></p>
+                <div class="modal-footer">
+                    <p><strong>Source:</strong> <span id="modal-source"></span></p>
+                    <button id="copy-details-btn" class="btn">Copy Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AI Tools Daily Report. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+ 

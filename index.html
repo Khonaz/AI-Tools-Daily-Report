@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Daily Report - June 11, 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__title">AI Tools Daily Report</h1>
+                <div class="header__meta">
+                    <span class="header__date">June 11, 2025</span>
+                    <span class="header__updated">Last updated: <span id="lastUpdated">9:50 AM</span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Executive Summary -->
+            <section class="summary">
+                <h2 class="summary__title">Executive Summary</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-card__value">10</div>
+                        <div class="metric-card__label">Total Updates</div>
+                    </div>
+                    <div class="metric-card metric-card--highlight">
+                        <div class="metric-card__value">4</div>
+                        <div class="metric-card__label">High Impact</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__value">3</div>
+                        <div class="metric-card__label">New Funding</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__value">4</div>
+                        <div class="metric-card__label">Product Launches</div>
+                    </div>
+                </div>
+                <div class="summary__text">
+                    <p>Major funding activity led by Anysphere's $900M round for Cursor AI. Significant model releases from Mistral and OpenAI, with continued impact on publisher traffic from Google's AI features.</p>
+                </div>
+            </section>
+
+            <!-- Filters and Search -->
+            <section class="controls">
+                <div class="controls__search">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search updates...">
+                </div>
+                <div class="controls__filters">
+                    <select id="categoryFilter" class="form-control">
+                        <option value="">All Categories</option>
+                        <option value="Development Tools">Development Tools</option>
+                        <option value="AI Models">AI Models</option>
+                        <option value="Enterprise AI">Enterprise AI</option>
+                        <option value="Fintech AI">Fintech AI</option>
+                        <option value="Blockchain AI">Blockchain AI</option>
+                        <option value="Search AI">Search AI</option>
+                        <option value="Open Source">Open Source</option>
+                    </select>
+                    <select id="impactFilter" class="form-control">
+                        <option value="">All Impact Levels</option>
+                        <option value="High">High Impact</option>
+                        <option value="Medium">Medium Impact</option>
+                        <option value="Low">Low Impact</option>
+                    </select>
+                    <select id="typeFilter" class="form-control">
+                        <option value="">All Types</option>
+                        <option value="Funding">Funding</option>
+                        <option value="Product Launch">Product Launch</option>
+                        <option value="Product Update">Product Update</option>
+                        <option value="Industry Impact">Industry Impact</option>
+                    </select>
+                </div>
+                <div class="controls__export">
+                    <button class="btn btn--secondary btn--sm" id="exportCsv">Export CSV</button>
+                    <button class="btn btn--secondary btn--sm" id="exportPdf">Export PDF</button>
+                </div>
+            </section>
+
+            <!-- AI Updates Grid -->
+            <section class="updates">
+                <h2 class="updates__title">Top AI Updates</h2>
+                <div class="updates-grid" id="updatesGrid">
+                    <!-- Updates will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- News Volume Chart -->
+            <section class="chart-section">
+                <h2 class="chart-section__title">AI News Volume Trends</h2>
+                <div class="chart-container">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1749628400/pplx_code_interpreter/d7728480_lmzzia.jpg" alt="AI News Volume Trends - June 5-11, 2025" class="chart-image">
+                </div>
+                <div class="chart-stats">
+                    <div class="stat">
+                        <span class="stat__label">Peak Day:</span>
+                        <span class="stat__value">June 10 (55 articles)</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat__label">Average Daily Volume:</span>
+                        <span class="stat__value">40 articles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat__label">Top Category:</span>
+                        <span class="stat__value">Enterprise AI</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__sources">
+                    <h3>Data Sources</h3>
+                    <div class="source-links">
+                        <a href="https://techcrunch.com" target="_blank" rel="noopener">TechCrunch</a>
+                        <a href="https://techstartups.com" target="_blank" rel="noopener">TechStartups</a>
+                        <a href="https://openai.com" target="_blank" rel="noopener">OpenAI</a>
+                        <a href="https://microsoft.com" target="_blank" rel="noopener">Microsoft</a>
+                        <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a>
+                        <a href="https://newsfile.com" target="_blank" rel="noopener">Newsfile</a>
+                    </div>
+                </div>
+                <div class="footer__assets">
+                    <h3>Download Assets</h3>
+                    <div class="asset-links">
+                        <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/5fc3e2f4496f5cd4a2101d8687842972/b119b342-6370-4634-9b5f-f3a19965733b/339259df.csv" target="_blank" rel="noopener">Daily Report CSV</a>
+                        <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/5fc3e2f4496f5cd4a2101d8687842972/b119b342-6370-4634-9b5f-f3a19965733b/a3a74b87.csv" target="_blank" rel="noopener">News Volume CSV</a>
+                    </div>
+                </div>
+                <div class="footer__updated">
+                    <p>Last updated: June 11, 2025 at 9:50 AM</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
